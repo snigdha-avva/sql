@@ -1,0 +1,67 @@
+create database dec12;
+use dec12;
+
+CREATE TABLE employees (
+    emp_id INT PRIMARY KEY,
+    full_name VARCHAR(100),
+    email VARCHAR(100),
+    department VARCHAR(50),
+    city VARCHAR(50),
+    salary VARCHAR(20),
+    remarks VARCHAR(200)
+);
+
+INSERT INTO employees VALUES
+(1, 'Karthik Kondpak', 'karthik.k@gmail.com', 'Data Engineering', 'Hyderabad', '75000', ' Top performer '),
+(2, 'Veena Reddy', 'veena_r@company.com', 'Analytics', 'Bangalore', '65000', 'Excellent communication'),
+(3, 'Ravi kumar', 'ravi.kumar@org.in', 'Data Science', 'Chennai', '85000', 'Needs improvement'),
+(4, 'Anil', 'anil@abc.com', 'DEVOPS', 'Pune', '70000', NULL),
+(5, ' Suresh ', 'suresh@xyz.com', 'data engineering', ' hyderabad ', '60000', ' ');
+
+INSERT INTO employees(emp_id ,email ,department,city ,salary ,remarks ) VALUES
+(6, 'karthik.k@gmail.com', 'Data Engineering', 'Hyderabad', '75000', ' Top performer ');
+
+INSERT INTO employees(emp_id ,email ,department,salary ,remarks ) VALUES
+(7, 'karthik.k@gmail.com', 'Data Engineering', '75000', ' Top performer ');
+
+select full_name,length(full_name) as length from employees;
+select full_name,char_length(full_name) as length from employees;
+
+select full_name,upper(full_name) as uppercase_name from employees;
+select full_name,lower(full_name) as lowercase_name from employees;
+
+select length(trim("a jay"));
+-- 5
+select length(trim("ajay "));
+-- 4
+select length(trim(" ajay "));
+ -- 5
+ 
+ select concat(full_name,'-',department) from employees;
+ 
+ select concat_ws('|',full_name,department) from employees;
+ 
+ select substring(full_name,1,4) from employees;
+ select substr(full_name,1,4) from employees;
+ select left(full_name,4) from employees;
+ select right(full_name,4) from employees;
+ 
+ select email,instr(email,'@') as position from employees;
+ select email,locate('@',email) as position from employees;
+ 
+ select department,replace(department,'data','bigdata') from employees; -- case sensitive
+ 
+ select department,reverse(department) from employees;
+ 
+ select emp_id,lpad(emp_id,3,"0") from employees;
+ select emp_id,rpad(emp_id,3,"0") from employees; -- second arg is length of string overall  so 2 zeros will be added
+ 
+ select * from employees;
+ 
+ select emp_id,full_name,ifnull(full_name,'no data') from employees;
+ 
+ select emp_id,full_name,coalesce(full_name,'NA') from employees;
+ 
+ select find_in_set("AS","KK,AS,SS");
+ 
+ 
